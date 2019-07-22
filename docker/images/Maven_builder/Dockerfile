@@ -1,5 +1,5 @@
 # Dockerfile
-FROM oracle-java:8
+FROM openjdk:8
 
 ENV MAVEN_VERSION 3.3.9
 
