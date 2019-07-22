@@ -1,5 +1,5 @@
 #!groovy
-// Run docker build
+// Run docker build maven
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -12,28 +12,23 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("create docker image") {
+        stage("create docker image Maven Builder") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker/images/toolbox') {
-                	sh 'docker build -t toolbox:lates . '
+                dir ('docker/images/Maven_builder') {
+                	sh 'docker build -t maven:3.3 . '
                 }
             }
         }
         stage("push docker images") {
              steps {
                  echo " ============== Docker_Push =================="
-                 dir ('docker/images/toolbox') {
-                 sh 'docker push localhost:5000/toolbox:lates'
+                 dir ('docker/images/Maven_builder') {
+                 sh 'docker push localhost:5000/maven:3.3'
                         }
                     }
                 }
-        stage("Remove old Images") {
-             steps {
-                 echo " ============== remuving image =================="
-                 sh 'docker image prune -a --force --filter "until=240h" '
-                  }
-                }
+
     }
 
 }
