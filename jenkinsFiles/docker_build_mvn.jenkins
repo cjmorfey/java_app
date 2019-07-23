@@ -12,6 +12,12 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("Remove old Images") {
+             steps {
+             echo " ============== remuving image =================="
+             sh 'docker image prune -a --force --filter "until=240h" '
+                 }
+             }
         stage("create docker image Maven Builder") {
             steps {
                 echo " ============== start building image =================="
@@ -28,12 +34,7 @@ pipeline {
                         }
                     }
                 }
-        stage("Remove old Images") {
-             steps {
-             echo " ============== remuving image =================="
-             sh 'docker image prune -a --force --filter "until=240h" '
-                 }
-             }
+        
 
     }
 
