@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/images/maven') {
-                	sh 'docker build -t Maven_builder:3.3 . '
+                	sh 'docker build -t maven_builder:3.3 . '
                 }
             }
         }
