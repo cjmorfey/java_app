@@ -31,7 +31,7 @@ pipeline {
         stage("Remove old Images") {
              steps {
              echo " ============== remuving image =================="
-             sh 'docker image prune -a --force --filter "until=10h" '
+             sh 'docker image prune -a --force --filter "until=240h" '
                  }
              }
 

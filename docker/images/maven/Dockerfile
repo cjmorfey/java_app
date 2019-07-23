@@ -1,5 +1,5 @@
 # Dockerfile
-FROM openjdk:8
+FROM openjdk:8-jdk-alpine
 
 ENV MAVEN_VERSION 3.3.9
 
