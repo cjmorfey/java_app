@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/images/maven') {
-                	sh 'docker build -t localhost:5000/maven:3.3 . '
+                	sh 'docker build -t myregistry.net/maven:3.3 . '
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
              steps {
                  echo " ============== Docker_Push =================="
                  dir ('docker/images/maven') {
-                 sh 'docker push localhost:5000/maven:3.3'
+                 sh 'docker push myregistry.net/maven:3.3'
                         }
                     }
                 }
